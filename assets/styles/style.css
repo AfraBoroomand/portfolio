@@ -34,6 +34,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 :root {
   --retro-cream: #fff6dc;
   --retro-blue-deep: #425b9a;
@@ -49,17 +50,20 @@
   --header-h: 144px;
   --gutter: 64px;
 }
-* {
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "IRANSans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 html {
   scroll-padding-top: 170px;
-}
-.side {
-  top: 160px;
 }
 
 body {
@@ -70,7 +74,6 @@ body {
   direction: rtl;
   background-image: radial-gradient(var(--retro-blue-sky) 1px, transparent 1px);
   background-size: 24px 24px;
-  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -90,15 +93,16 @@ button:focus-visible {
 }
 
 header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   padding: 14px var(--gutter);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background-color: var(--retro-cream);
   border-bottom: 2px solid var(--retro-blue-deep);
 }
@@ -422,15 +426,18 @@ header {
   display: flex;
   align-items: center;
 }
+
 .about-text p {
   font-size: 0.88rem;
   line-height: 1.9;
   color: var(--retro-black);
 }
+
 .section-container {
   width: 100%;
   padding: 0 var(--gutter) 64px;
 }
+
 .section-title {
   font-size: 1.6rem;
   font-weight: 700;
@@ -571,40 +578,63 @@ header {
   color: var(--retro-cream);
 }
 
-@media (max-width: 600px) {
-  :root {
-    --header-h: 114px;
-    --gutter: 20px;
-  }
-  html {
-    scroll-padding-top: 110px;
-  }
-  .mainbody {
-    flex-direction: column;
-  }
-  .newssec,
-  .newsside {
-    width: 100%;
-  }
+.post-links-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  width: 100%;
+}
 
-  .side {
-    position: static;
-    top: auto;
-  }
+.post-links-vertical .readmore {
+  position: static;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
 
-  .hero h2 {
-    font-size: 1.6rem;
-  }
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
 
-  .section-container {
-    padding: 0 var(--gutter) 48px;
-  }
+.contact-link {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: var(--retro-border);
+  box-shadow: var(--retro-shadow);
+  background-color: var(--retro-white);
+  color: var(--retro-black);
+  text-decoration: none;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--retro-shadow-hover);
+  background-color: var(--retro-cream);
+  color: var(--retro-blue-deep);
 }
 
 @media (max-width: 600px) {
   :root {
     --header-h: 92px;
     --logo-size: 48px;
+    --gutter: 20px;
+  }
+
+  html {
+    scroll-padding-top: 110px;
   }
 
   header {
@@ -624,6 +654,20 @@ header {
     display: none;
   }
 
+  .mainbody {
+    flex-direction: column;
+  }
+
+  .newssec,
+  .newsside {
+    width: 100%;
+  }
+
+  .side {
+    position: static;
+    top: auto;
+  }
+
   .hero {
     padding: 32px 16px;
     min-height: auto;
@@ -631,6 +675,10 @@ header {
 
   .hero h2 {
     font-size: 1.3rem;
+  }
+
+  .section-container {
+    padding: 0 var(--gutter) 48px;
   }
 
   .post {
@@ -678,51 +726,4 @@ header {
   .skill-card:hover {
     transform: none;
   }
-}
-.post-links-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 16px;
-  width: 100%;
-}
-
-.post-links-vertical .readmore {
-  position: static;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.contact-link {
-  display: block;
-  width: 100%;
-  padding: 12px 16px;
-  border: var(--retro-border);
-  box-shadow: var(--retro-shadow);
-  background-color: var(--retro-white);
-  color: var(--retro-black);
-  text-decoration: none;
-  font-weight: 500;
-  overflow-wrap: anywhere;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.contact-link:hover {
-  transform: translate(2px, 2px);
-  box-shadow: var(--retro-shadow-hover);
-  background-color: var(--retro-cream);
-  color: var(--retro-blue-deep);
 }
