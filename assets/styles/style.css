@@ -340,8 +340,8 @@ header,
 
 .newssec {
   width: 70%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -576,6 +576,41 @@ header,
   color: var(--retro-blue-deep);
 }
 
+/* Updated Project Card Styles */
+.project-card {
+  position: relative;
+  background-color: var(--retro-cream, #fff6dc);
+  border: 3px solid #1e2229;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 4px 4px 0px #1e2229;
+}
+
+.project-badge {
+  align-self: flex-start;
+  position: static;
+  background-color: #ffd43b;
+  color: #1e2229;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border: 2px solid #1e2229;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #1e2229;
+  margin-bottom: 4px;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e2229;
+  margin: 0;
+  line-height: 1.4;
+}
+
 .site-footer {
   background-color: var(--retro-blue-deep);
   color: var(--retro-white);
@@ -681,6 +716,22 @@ header,
   color: var(--retro-blue-deep);
 }
 
+@media (max-width: 968px) {
+  .mainbody {
+    flex-direction: column;
+  }
+
+  .newssec,
+  .newsside {
+    width: 100%;
+  }
+
+  .side {
+    position: static;
+    top: auto;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --header-h: 96px;
@@ -764,20 +815,6 @@ header,
     padding: 10px 14px;
     background-color: var(--retro-cream);
     border: 1.5px solid var(--retro-blue-deep);
-  }
-
-  .mainbody {
-    flex-direction: column;
-  }
-
-  .newssec,
-  .newsside {
-    width: 100%;
-  }
-
-  .side {
-    position: static;
-    top: auto;
   }
 
   .hero {
